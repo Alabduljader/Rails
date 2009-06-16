@@ -1,0 +1,36 @@
+<h1>Listing posts</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Date</th>
+  </tr>
+
+<% for post in @posts %>
+  <tr>
+    <td><%=h post.title %></td>
+    <td><%=h post.body %></td>
+    <td><%=h post.date %></td>
+    <td><%= link_to 'Show', post %></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New post', new_post_path %>
+
+<%= link_to "Recent post", posts_path(:sort_by=>"recent") %>
+<%= link_to "Oldest post", posts_path(:sort_by=>"oldest") %>
+
+<h3>Enter keyword</h3>
+<form action ="posts/search" method="post">
+<input name = "key" type="input" />
+<input value="Send" type="submit"/>
+</form> 
+
+
+
